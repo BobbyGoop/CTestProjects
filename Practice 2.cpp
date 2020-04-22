@@ -2,24 +2,45 @@
 #include <locale>
 using namespace std;
 
-int checking_ex() {
+int checking_ex(int sw) {
 	int number;
 	cin >> number;
-	if (cin.fail() || number < 1) {
-		cin.clear();
-		cin.ignore(32767, '\n');
-		throw invalid_argument(" Введите целое неотрицательное число больше 0 ");
-	}
-	else return number;
+	switch (sw) {
+		case 1: {
+			if (cin.fail() || number < 1) {
+				cin.clear();
+				cin.ignore(32767, '\n');
+				throw invalid_argument(" Введите целое неотрицательное число больше 0 ");
+				break;
+			}
+			else return number;
+		}
+		case 2: {
+			if (!cin) {
+				while (cin.get() != '\n') cin.clear();
+				throw invalid_argument(" Элемент массива должен быть целым числом");
+				break;
+			}
+			else return number;
+		}
+	}	
 }
 
-int input_data() {
+int input_data(int sw, int count = 1) {
 	int input;
 	bool incorrect_length; 
 	do {
-		cout << " Введите длину исходного массива: ";
+		switch (sw) {
+		case 1: { cout << " Введите длину исходного массива: ";
+			break;
+		}
+		case 2: {
+			cout << " Введите " << count  << "-й элемент массива: ";
+			break;
+		}
+		}
 		try {
-			input = checking_ex();
+			input = checking_ex(sw);
 			incorrect_length = false;
 		}
 		catch (invalid_argument & ex) {
@@ -47,12 +68,11 @@ int * getResult(const int *arr, const int l, int &newlen) {
 
 int main() {
 	setlocale(LC_ALL, "rus");
-	int res_len = 0;
-	int length = input_data();
+	int res_len = 0, action;
+	int length = input_data(action = 1);
 	int *array = new int[length];
 	for (int i = 0; i < length; i++) {
-		cout << " Введите " << i + 1 << "-й элемент массива: ";
-		cin >> array[i];
+		array[i] = input_data(action = 2, i + 1);
 	}
 	int* res = getResult(array, length, res_len);
 	if (res_len != 0) {
