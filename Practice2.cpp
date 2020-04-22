@@ -4,7 +4,7 @@ using namespace std;
 
 void checking(int num) {
 	if (num < 1) {
-		throw invalid_argument(" Â ìàññèâå íå ìîæåò áûòü îòğèöàòåëüíîå èëè íóëåâîå ÷èñëî ıëåìåíòîâ");
+		throw invalid_argument(" Ğ’ Ğ¼Ğ°ÑÑĞ¸Ğ²Ğµ Ğ½Ğµ Ğ¼Ğ¾Ğ¶ĞµÑ‚ Ğ±Ñ‹Ñ‚ÑŒ Ğ¾Ñ‚Ñ€Ğ¸Ñ†Ğ°Ñ‚ĞµĞ»ÑŒĞ½Ğ¾Ğµ Ğ¸Ğ»Ğ¸ Ğ½ÑƒĞ»ĞµĞ²Ğ¾Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾ ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ¾Ğ²");
 	}
 
 }
@@ -13,7 +13,7 @@ int inputLength() {
 	int input;
 	bool incorrect_length;
 	do {
-		cout << " Ââåäèòå äëèíó ìàññèâà :  ";
+		cout << " Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ´Ğ»Ğ¸Ğ½Ñƒ Ğ¼Ğ°ÑÑĞ¸Ğ²Ğ° :  ";
 		cin >> input;
 		try {
 			checking(input);
@@ -48,14 +48,14 @@ int main() {
 	int length = inputLength();
 	int *array = new int[length];
 	for (int i = 0; i < length; i++) {
-		cout << " Ââåäèòå " << i + 1 << "-é ıëåìåíò ìàññèâà: ";
+		cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ " << i + 1 << "-Ğ¹ ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚ Ğ¼Ğ°ÑÑĞ¸Ğ²Ğ°: ";
 		cin >> array[i];
 	}
 	int* res = getResult(array, length, res_len);
-	cout << " ×åòíûå îòğèöàòåëüíûå ıëåìåíòû ìàññèâà: ";
+	cout << " Ğ§ĞµÑ‚Ğ½Ñ‹Ğµ Ğ¾Ñ‚Ñ€Ğ¸Ñ†Ğ°Ñ‚ĞµĞ»ÑŒĞ½Ñ‹Ğµ ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ñ‹ Ğ¼Ğ°ÑÑĞ¸Ğ²Ğ°: ";
 	for (int i = 0; i < res_len; i++)
 		cout << " " << *(res + i);
-	cout << "\n Äëèíà íîâîãî ìàññèâà: " << res_len;
+	cout << "\n Ğ”Ğ»Ğ¸Ğ½Ğ° Ğ½Ğ¾Ğ²Ğ¾Ğ³Ğ¾ Ğ¼Ğ°ÑÑĞ¸Ğ²Ğ°: " << res_len;
 	
 	delete[] array;
 	return 0;
