@@ -1,0 +1,3 @@
+## template for gitignore
+.vs/
+x64/
